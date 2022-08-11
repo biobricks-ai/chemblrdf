@@ -1,11 +1,24 @@
 stages:
-  download:
-    cmd: wget -r -m -P ./download ftp://ftp.ebi.ac.uk/pub/databases/RDF/chembl/latest/
+  download: 
+    cmd: src/1_download.sh
+    deps:
+    - src/1_download.sh
     outs:
-      - download/ftp.ebi.ac.uk:
-          persist: true
-          cache: true
+    - download/
+    - temp/
+  unzip:
+    cmd: src/2_unzip.sh
+    deps:
+    - src/2_unzip.sh
+    - download/
+    - temp/
+    outs:
+    - raw/
   build:
-    cmd: Rscript src/1_build_parquet.R
+    cmd: src/3_build_parquet.sh
+    deps:
+    - src/3_build_parquet.sh
+    - raw/
+    - temp/
     outs:
-      - data/chembl_rdf
+    - data/

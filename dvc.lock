@@ -1,0 +1,17 @@
+schema: '2.0'
+stages:
+  build_data:
+    cmd: ./BuildPubChemRDF.sh
+    deps:
+    - path: src/BuildPubChemRDF.sh
+      md5: 
+      size: 
+    outs:
+    - path: download/
+      md5: 
+      size: 
+      nfiles: 
+    - path: data/
+      md5: 
+      size: 
+      nfiles:   
