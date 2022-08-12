@@ -1,17 +1,54 @@
 schema: '2.0'
 stages:
-  build_data:
-    cmd: ./BuildPubChemRDF.sh
+  download:
+    cmd: src/1_download.sh
     deps:
-    - path: src/BuildPubChemRDF.sh
-      md5: 
-      size: 
+    - path: src/1_download.sh
+      md5: e87ff761fa0f7909cd88edfa74bce583
+      size: 341
     outs:
     - path: download/
-      md5: 
-      size: 
-      nfiles: 
+      md5: 7e40783419fbb03ba7e7d874b4524fa5.dir
+      size: 2371157551
+      nfiles: 24
+  unzip:
+    cmd: src/2_unzip.sh
+    deps:
+    - path: download/
+      md5: 7e40783419fbb03ba7e7d874b4524fa5.dir
+      size: 2371157551
+      nfiles: 24
+    - path: src/2_unzip.sh
+      md5: 861a73ac2de5f4528c8a1bf75238de3d
+      size: 819
+    outs:
+    - path: raw/
+      md5: 7b484a9b86c1889c90a038f2302e884d.dir
+      size: 37518257749
+      nfiles: 24
+    - path: temp/
+      md5: 5e1c886f0cf1ff44ea4a3fd600ac6f44.dir
+      size: 571
+      nfiles: 2
+  build:
+    cmd: src/3_build_parquet.sh
+    deps:
+    - path: raw/
+      md5: 7b484a9b86c1889c90a038f2302e884d.dir
+      size: 37518257749
+      nfiles: 24
+    - path: src/3_build_parquet.sh
+      md5: 6b95753c1cebe9939c953d6ba39b31f3
+      size: 739
+    - path: src/nquads2parquet.py
+      md5: 1adc0e6bd5bd6f9cd9dfdd95d4eed97b
+      size: 1485
+    - path: temp/
+      md5: 5e1c886f0cf1ff44ea4a3fd600ac6f44.dir
+      size: 571
+      nfiles: 2
+    outs:
     - path: data/
-      md5: 
-      size: 
-      nfiles:   
+      md5: b5fb5b757d7a00c0432c57164bce11e0.dir
+      size: 22703938582
+      nfiles: 72

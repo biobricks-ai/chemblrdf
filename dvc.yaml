@@ -5,19 +5,19 @@ stages:
     - src/1_download.sh
     outs:
     - download/
-    - temp/
   unzip:
     cmd: src/2_unzip.sh
     deps:
     - src/2_unzip.sh
     - download/
-    - temp/
     outs:
-    - raw/
+    - raw/    
+    - temp/
   build:
     cmd: src/3_build_parquet.sh
     deps:
     - src/3_build_parquet.sh
+    - src/nquads2parquet.py
     - raw/
     - temp/
     outs:

@@ -20,7 +20,7 @@ cd $datapath
 xargs mkdir -p < $temppath/dirs.txt
 cd $localpath
 
-cat $temppath/files.txt | xargs -P4 -n1 bash -c '
+cat $temppath/files.txt | xargs -P1 -n1 bash -c '
 if test -f '$datapath'$1.parquet; then
   echo "build_parquet: file '$datapath'$1.parquet already created."
 else
@@ -29,4 +29,5 @@ else
   rm '$datapath'$1.nquads;
   rm '$datapath'$1.csv;
 fi' {}
+
 
