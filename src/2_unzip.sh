@@ -16,7 +16,6 @@ echo "Raw path: $rawpath"
 
 cd $downloadpath
 find . -type d > $temppath/dirs.txt
-# find . -type f -name '*.ttl.gz' | cut -c 2- | cut -d"." -f2 | cut -f 2 -d '.' | sort > $temppath/files.txt
 find . -type f -name '*.ttl.gz' | cut -c 2- | sed "s/.ttl.gz//" | sort > $temppath/files.txt
 
 cd $rawpath
