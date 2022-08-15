@@ -19,8 +19,9 @@ stages:
       size: 2371157551
       nfiles: 24
     - path: src/2_unzip.sh
-      md5: 861a73ac2de5f4528c8a1bf75238de3d
-      size: 819
+      md5: b7dd29cad757d9d689e579019ff778be
+      size: 822
+      isexec: true
     outs:
     - path: raw/
       md5: 7b484a9b86c1889c90a038f2302e884d.dir
@@ -38,8 +39,9 @@ stages:
       size: 37518257749
       nfiles: 24
     - path: src/3_build_parquet.sh
-      md5: 6b95753c1cebe9939c953d6ba39b31f3
-      size: 739
+      md5: f613c6130a72ca277a8e8463d578959f
+      size: 736
+      isexec: true
     - path: src/nquads2parquet.py
       md5: 1adc0e6bd5bd6f9cd9dfdd95d4eed97b
       size: 1485
@@ -49,6 +51,6 @@ stages:
       nfiles: 2
     outs:
     - path: data/
-      md5: b5fb5b757d7a00c0432c57164bce11e0.dir
-      size: 22703938582
-      nfiles: 72
+      md5: 491b74a2be69bc55f7e975fe15b8e433.dir
+      size: 834838317
+      nfiles: 24
