@@ -5,7 +5,7 @@ import os
 
 FileName = sys.argv[1]
 FileNameCSV = os.path.splitext(FileName)[0] + ".csv"
-FileNameParquet = os.path.splitext(FileName)[0] + ".parquet"
+FileNameParquet = sys.argv[2]
 
 print(f"nquads2parquet: Creating CSV file {FileNameCSV}")
 File = open(FileName, 'r')
